@@ -5,7 +5,7 @@ import checker from "vite-plugin-checker";
 import tsconfigPaths from "vite-tsconfig-paths";
 import supportedBrowsers from "vite-plugin-browserslist-useragent";
 import { TailwindCSSVitePlugin as tailwindCSSVitePlugin } from "tailwindcss-vite-plugin";
-import terminal from 'vite-plugin-terminal'
+import terminal from "vite-plugin-terminal";
 
 export default defineConfig({
 	plugins: [

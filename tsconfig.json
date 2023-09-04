@@ -1,0 +1,24 @@
+{
+	"extends": "@tommy-mitchell/tsconfig",
+	"include": ["src"],
+	"references": [{ "path": "./tsconfig.node.json" }],
+	"compilerOptions": {
+		"noUnusedLocals": false,
+		"allowImportingTsExtensions": true,
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+    	"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"baseUrl": ".",
+		"paths": {
+			"@assets/*": ["./src/assets/*"],
+			"@components/*": ["./src/components/*/index.ts"],
+			"@helpers/*": ["./src/helpers/*"],
+			"@hooks/*": ["./src/hooks/*"],
+			"@utils/*": ["./src/utils/*"],
+			"@utils": ["./src/utils/index.ts"],
+			"~/*": ["./src/*"]
+		},
+	},
+}

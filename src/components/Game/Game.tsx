@@ -1,4 +1,5 @@
 import React from "react";
+import GuessInput from "@components/GuessInput";
 import { sample } from "@utils";
 import { WORDS } from "@helpers/data.ts";
 
@@ -10,6 +11,6 @@ console.info({ answer });
 
 export default function Game() {
 	return (
-		<>Put a game here!</>
+		<GuessInput onGuess={guess => console.log({ guess })} />
 	);
 }

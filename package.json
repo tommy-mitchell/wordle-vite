@@ -42,6 +42,7 @@
 		"vite-plugin-browserslist-useragent": "^0.2.2",
 		"vite-plugin-checker": "^0.5.6",
 		"vite-plugin-react-click-to-component": "^2.0.0",
+		"vite-plugin-terminal": "^1.1.0",
 		"vite-tsconfig-paths": "^4.2.0",
 		"xo": "^0.56.0"
 	},

@@ -4,6 +4,7 @@
 	"references": [{ "path": "./tsconfig.node.json" }],
 	"compilerOptions": {
 		"noUnusedLocals": false,
+		"noUnusedParameters": false,
 		"allowImportingTsExtensions": true,
 		"module": "ESNext",
 		"moduleResolution": "bundler",

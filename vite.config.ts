@@ -7,6 +7,7 @@ import supportedBrowsers from "vite-plugin-browserslist-useragent";
 import terminal from "vite-plugin-terminal";
 
 export default defineConfig({
+	base: "/wordle-vite/",
 	plugins: [
 		react(),
 		reactClickToComponent(),

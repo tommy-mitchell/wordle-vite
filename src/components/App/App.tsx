@@ -6,7 +6,7 @@ export default function App() {
 	const [isDarkMode, setIsDarkMode] = React.useState(false);
 
 	React.useEffect(() => {
-		document.documentElement.toggleAttribute("data-theme-dark");
+		document.documentElement.toggleAttribute("data-theme-dark", isDarkMode);
 	}, [isDarkMode]);
 
 	return (

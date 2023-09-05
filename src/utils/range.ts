@@ -11,3 +11,5 @@ export const range = (start: number, end: number, step = 1) => {
 
 	return output;
 };
+
+export const rangeOf = (end: number) => range(0, end);

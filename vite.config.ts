@@ -17,8 +17,8 @@ export default defineConfig({
 		tsconfigPaths(),
 		supportedBrowsers(),
 		/// tailwindCSSVitePlugin(),
-		terminal({
-			console: "terminal",
-		}),
+		// terminal({
+		// 	console: "terminal",
+		// }),
 	],
 });

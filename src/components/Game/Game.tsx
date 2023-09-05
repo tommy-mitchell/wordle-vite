@@ -49,7 +49,6 @@ export default function Game() {
 					)
 			)}
 			<GuessInput isDisabled={gameState !== "playing"} onGuess={handleGuess} />
-			{/* <span className="fixed bottom-5 right-5">{answer}, {gameState}</span> */}
 		</>
 	);
 }

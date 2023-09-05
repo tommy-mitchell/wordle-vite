@@ -1,5 +1,5 @@
 {
-	"extends": ["xo-react", "plugin:tailwindcss/recommended"],
+	"extends": ["xo-react"],
 	"ignores": ["src/vite-env.d.ts"],
 	"rules": {
 		"arrow-parens": "off",

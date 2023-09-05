@@ -3,53 +3,82 @@
  * solving algorithm!
  */
 
-export function checkGuess(guess: string, answer: string) {
+export type GuessResult = {
+	letter: string;
+	status: "correct" | "misplaced" | "incorrect";
+};
+
+export const checkGuess = (guess: string, answer: string): GuessResult[] => {
 	// This constant is a placeholder that indicates we've successfully
 	// dealt with this character (it's correct, or misplaced).
-	const SOLVED_CHAR = "✓"; // eslint-disable-line @typescript-eslint/naming-convention
+	const SOLVED_LETTER = "✓"; // eslint-disable-line @typescript-eslint/naming-convention
 
-	if (!guess) {
-		return null;
+	if (guess.length !== answer.length) {
+		return [];
 	}
 
-	const guessChars = [...guess.toUpperCase()];
-	const answerChars = [...answer];
+	const guessLetters = [...guess];
+	const answerLetters = [...answer];
 
-	const result = [];
+	const result: GuessResult[] = [];
 
 	// Step 1: Look for correct letters.
-	for (let i = 0; i < guessChars.length; i++) {
-		if (guessChars[i] === answerChars[i]) {
+	for (let i = 0; i < guessLetters.length; i++) {
+		if (guessLetters[i] === answerLetters[i]) {
 			result[i] = {
-				letter: guessChars[i],
+				letter: guessLetters[i]!,
 				status: "correct",
 			};
-			answerChars[i] = SOLVED_CHAR;
-			guessChars[i] = SOLVED_CHAR;
+
+			answerLetters[i] = SOLVED_LETTER;
+			guessLetters[i] = SOLVED_LETTER;
 		}
 	}
 
 	// Step 2: look for misplaced letters. If it's not misplaced,
 	// it must be incorrect.
-	for (const [i, guessChar] of guessChars.entries()) {
-		if (guessChar === SOLVED_CHAR) {
+	for (const [i, guessLetter] of guessLetters.entries()) {
+		if (guessLetter === SOLVED_LETTER) {
 			continue;
 		}
 
-		let status = "incorrect";
-		const misplacedIndex = answerChars.indexOf(
-			guessChar,
-		);
+		let status: GuessResult["status"] = "incorrect";
+
+		const misplacedIndex = answerLetters.indexOf(guessLetter);
+
 		if (misplacedIndex >= 0) {
 			status = "misplaced";
-			answerChars[misplacedIndex] = SOLVED_CHAR;
+			answerLetters[misplacedIndex] = SOLVED_LETTER;
 		}
 
-		result[i] = {
-			letter: guessChar,
-			status,
-		};
+		result[i] = { letter: guessLetter, status };
 	}
 
 	return result;
-}
+};
+
+const badCheckGuess = (guess: string, answer: string): GuessResult[] => {
+	const guessLetters = [...guess];
+	const answerLetters = [...answer];
+
+	return [...answer].map((answerLetter, index) => {
+		const guessLetter = guessLetters.at(index)!;
+
+		/* eslint-disable unicorn/no-nested-ternary, operator-linebreak, @typescript-eslint/indent */
+		const status = (
+			guessLetter === answerLetter ? "correct" :
+			answerLetters.includes(guessLetter) ? "misplaced" :
+			"incorrect"
+		);
+		/* eslint-enable unicorn/no-nested-ternary, operator-linebreak, @typescript-eslint/indent */
+
+		if (status === "misplaced") {
+			answerLetters.splice(answerLetters.indexOf(guessLetter), 1);
+		}
+
+		return {
+			letter: guessLetter,
+			status,
+		};
+	});
+};

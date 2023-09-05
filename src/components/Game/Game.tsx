@@ -1,7 +1,8 @@
 import React from "react";
 import GuessResults, { type Guess } from "@components/GuessResults";
 import GuessInput from "@components/GuessInput";
-import { sample, generateUniqueId } from "@utils";
+import { checkGuess } from "@helpers/game-helpers";
+import { sample } from "@utils";
 import { WORDS } from "@helpers/data.ts";
 
 // Pick a random word on every pageload.
@@ -16,7 +17,7 @@ export default function Game() {
 	const handleGuess = (guess: string) => {
 		console.log({ guess });
 
-		const nextGuesses = [...guesses, { guess, id: generateUniqueId() }];
+		const nextGuesses = [...guesses, { guess, result: checkGuess(guess, answer) }];
 		setGuesses(nextGuesses);
 	};
 

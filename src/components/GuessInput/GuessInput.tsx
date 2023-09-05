@@ -6,6 +6,7 @@ type GuessInputProps = Readonly<{
 
 export default function GuessInput({ onGuess }: GuessInputProps) {
 	const [guess, setGuess] = React.useState("");
+	const inputRef = React.useRef<HTMLInputElement>(null);
 
 	return (
 		<form
@@ -18,6 +19,7 @@ export default function GuessInput({ onGuess }: GuessInputProps) {
 		>
 			<label htmlFor="guess-input">Enter guess:</label>
 			<input
+				ref={inputRef}
 				id="guess-input"
 				type="text"
 				pattern={/[A-Z]{5}/.source}
@@ -28,6 +30,11 @@ export default function GuessInput({ onGuess }: GuessInputProps) {
 
 					if (/^[A-Z]{0,5}$/m.test(nextGuess)) {
 						setGuess(nextGuess);
+					}
+				}}
+				onKeyDown={event => {
+					if (event.key === "Escape") {
+						inputRef.current?.blur();
 					}
 				}}
 			/>

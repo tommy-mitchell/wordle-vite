@@ -1,28 +1,13 @@
 import React from "react";
+import GuessRow from "@components/GuessRow";
 import { NUM_OF_GUESSES_ALLOWED } from "@helpers/constants.ts";
-import { rangeOf } from "@utils";
+import type { GuessResult } from "@helpers/game-helpers";
+import { range } from "@utils";
 
 export type Guess = {
 	guess: string;
-	id: string;
+	result: GuessResult[];
 };
-
-type GuessRowProps = Readonly<{
-	letters: string[];
-}>;
-
-function GuessRow({ letters }: GuessRowProps) {
-	return (
-		<p className="guess">
-			{[...letters].map((letter, index) => (
-				// eslint-disable-next-line react/no-array-index-key
-				<span key={index} className="cell">
-					{letter}
-				</span>
-			))}
-		</p>
-	);
-}
 
 type GuessResultsProps = Readonly<{
 	guesses: Guess[];
@@ -31,10 +16,8 @@ type GuessResultsProps = Readonly<{
 export default function GuessResults({ guesses }: GuessResultsProps) {
 	return (
 		<div className="guess-results">
-			{rangeOf(NUM_OF_GUESSES_ALLOWED).map(index => (
-				guesses[index]
-					? <GuessRow key={guesses[index]!.id} letters={[...guesses[index]!.guess]} />
-					: <GuessRow key={index} letters={["", "", "", "", ""]} />
+			{range(NUM_OF_GUESSES_ALLOWED).map(index => (
+				<GuessRow key={index} letters={guesses[index]?.result} />
 			))}
 		</div>
 	);

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-height="100">
+	<defs>
+		<pattern id="wavy-border" x="0" y="0" width="100%" height="100%" patternUnits="userSpaceOnUse">
+			<path stroke="currentColor" fill="currentColor" d="M-40,83.627C20.307,83.627,20.058,44,80,44s60.003,40,120,40s59.948-40,120-40s60.313,40,120,40s60.258-40,120-40s60.202,40,120,40s60.147-40,120-40s60.513,40,120,40s60.036-40,120-40c59.964,0,60.402,40,120,40s59.925-40,120-40s60.291,40,120,40s60.235-40,120-40s60.18,40,120,40s59.82,0,59.82,0l0.18,14H-60V84L-40,83.627z" />
+		</pattern>
+	</defs>
+	<rect fill="url(#wavy-border)" width="100%" height="100%" />
+</svg>

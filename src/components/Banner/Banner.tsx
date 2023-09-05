@@ -9,7 +9,9 @@ type BannerProps = Readonly<{
 export default function Banner({ type, children }: BannerProps) {
 	return (
 		<div className={clsx("banner", type)}>
+			<div className="wavy-border top" />
 			{children}
+			<div className="wavy-border bottom" />
 		</div>
 	);
 }

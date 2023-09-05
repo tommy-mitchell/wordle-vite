@@ -10,6 +10,8 @@ import { WORDS } from "@helpers/data.ts";
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
 
+console.info({ answer });
+
 type GameState = "playing" | "won" | "lost";
 
 export default function Game() {

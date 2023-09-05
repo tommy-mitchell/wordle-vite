@@ -82,3 +82,7 @@ const badCheckGuess = (guess: string, answer: string): GuessResult[] => {
 		};
 	});
 };
+
+export const formatNumberOfGuesses = <Count extends number>(count: Count) => (
+	count === 1 ? "1 guess" : `${count} guesses` as const
+);

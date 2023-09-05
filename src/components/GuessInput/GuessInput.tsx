@@ -2,9 +2,10 @@ import React from "react";
 
 type GuessInputProps = Readonly<{
 	onGuess: (guess: string) => void;
+	isDisabled: boolean;
 }>;
 
-export default function GuessInput({ onGuess }: GuessInputProps) {
+export default function GuessInput({ onGuess, isDisabled }: GuessInputProps) {
 	const [guess, setGuess] = React.useState("");
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -20,6 +21,7 @@ export default function GuessInput({ onGuess }: GuessInputProps) {
 			<label htmlFor="guess-input">Enter guess:</label>
 			<input
 				ref={inputRef}
+				disabled={isDisabled}
 				id="guess-input"
 				type="text"
 				pattern={/[A-Z]{5}/.source}

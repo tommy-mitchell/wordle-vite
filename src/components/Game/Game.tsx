@@ -1,39 +1,18 @@
 import React from "react";
+import type { GameState } from "@components/GameWrapper";
 import Banner from "@components/Banner";
 import GuessResults, { type Guess } from "@components/GuessResults";
 import GuessInput from "@components/GuessInput";
-import { NUM_OF_GUESSES_ALLOWED } from "@helpers/constants";
-import { checkGuess, formatNumberOfGuesses } from "@helpers/game-helpers";
-import { sample } from "@utils";
-import { WORDS } from "@helpers/data.ts";
+import { formatNumberOfGuesses } from "@helpers/game-helpers";
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
+type GameProps = Readonly<{
+	answer: string;
+	gameState: GameState;
+	guesses: Guess[];
+	onGuess: (guess: string) => void;
+}>;
 
-console.info({ answer });
-
-type GameState = "playing" | "won" | "lost";
-
-export default function Game() {
-	const [guesses, setGuesses] = React.useState<Guess[]>([]);
-	const [gameState, setGameState] = React.useState<GameState>("playing");
-
-	const handleGuess = (guess: string) => {
-		console.log({ guess });
-
-		const nextGuess: Guess = { guess, result: checkGuess(guess, answer) };
-		const nextGuesses = [...guesses, nextGuess];
-		setGuesses(nextGuesses);
-
-		const hasWon = nextGuess.result.every(({ status }) => status === "correct");
-
-		if (hasWon) {
-			setGameState("won");
-		} else if (nextGuesses.length === NUM_OF_GUESSES_ALLOWED) {
-			setGameState("lost");
-		}
-	};
-
+export default function Game({ answer, gameState, guesses, onGuess }: GameProps) {
 	return (
 		<>
 			<GuessResults guesses={guesses} />
@@ -50,7 +29,7 @@ export default function Game() {
 						</Banner>
 					)
 			)}
-			<GuessInput isDisabled={gameState !== "playing"} onGuess={handleGuess} />
+			<GuessInput isDisabled={gameState !== "playing"} onGuess={onGuess} />
 		</>
 	);
 }

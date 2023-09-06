@@ -1,3 +1,8 @@
+import { sample } from "@utils";
+import { WORDS } from "./data.ts";
+
+export const getWord = () => sample(WORDS);
+
 /**
  * Thanks to Github user dylano for supplying a more-accurate
  * solving algorithm!

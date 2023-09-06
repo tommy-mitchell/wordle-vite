@@ -255,13 +255,13 @@ h1 {
 		-webkit-mask: url("./assets/wavy-border.svg") repeat-x;
 		mask: url("./assets/wavy-border.svg") repeat-x;
 
-		-webkit-mask-size: 10%;
-		mask-size: 10%; // 21.25% on small
+		-webkit-mask-size: 720px;
+		mask-size: 720px;
 
 		background-color: inherit;
 
 		height: 100px;
-		width: 500vw;
+		width: 4320px;
 		position: absolute;
 
 		&.top {

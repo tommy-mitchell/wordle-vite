@@ -18,8 +18,6 @@ export default function GameWrapper() {
 	}, [isDarkMode]);
 
 	const handleGuess = (guess: string) => {
-		console.log({ guess });
-
 		const nextGuess: Guess = { guess, result: checkGuess(guess, answer) };
 		const nextGuesses = [...guesses, nextGuess];
 		setGuesses(nextGuesses);

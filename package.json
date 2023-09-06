@@ -43,5 +43,6 @@
 		"vite-tsconfig-paths": "^4.2.0",
 		"xo": "^0.56.0"
 	},
-	"browserslist": "> 0.5%, last 2 versions, not dead"
+	"browserslist": "> 0.5%, last 2 versions, not dead",
+	"packageManager": "yarn@3.6.1"
 }

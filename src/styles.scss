@@ -83,7 +83,7 @@ header {
 	color: $color-gray-300;
 
 	section.buttons {
-		position: fixed;
+		position: absolute;
 		right: 1.5rem;
 		display: flex;
 		gap: .75rem;

@@ -5,14 +5,14 @@ import GuessResults, { type Guess } from "@components/GuessResults";
 import GuessInput from "@components/GuessInput";
 import { formatNumberOfGuesses } from "@helpers/game-helpers";
 
-type GameProps = Readonly<{
+type GameBoardProps = Readonly<{
 	answer: string;
 	gameState: GameState;
 	guesses: Guess[];
 	onGuess: (guess: string) => void;
 }>;
 
-export default function Game({ answer, gameState, guesses, onGuess }: GameProps) {
+export default function GameBoard({ answer, gameState, guesses, onGuess }: GameBoardProps) {
 	return (
 		<>
 			<GuessResults guesses={guesses} />

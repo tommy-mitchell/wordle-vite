@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "@components/Header";
-import Game from "@components/Game";
+import Game from "@components/GameBoard";
 import type { Guess } from "@components/GuessResults";
 import { NUM_OF_GUESSES_ALLOWED } from "@helpers/constants";
 import { checkGuess, getWord } from "@helpers/game-helpers.ts";

@@ -85,6 +85,8 @@ header {
 	section.buttons {
 		position: fixed;
 		right: 1.5rem;
+		display: flex;
+		gap: .75rem;
 	}
 
 	@include dark-mode() {
@@ -234,6 +236,10 @@ h1 {
 	animation: slideUp 400ms ease-out;
 	will-change: transform;
 
+	p {
+		animation: bounce 1.5s ease-in-out infinite;
+	}
+
 	&.happy {
 		background-color: $color-success;
 		color: white;
@@ -246,11 +252,11 @@ h1 {
 
 	// https://codepen.io/Henkey/pen/OKONya
 	.wavy-border {
-		-webkit-mask-image: url("./assets/wavy-border.svg");
-		mask-image: url("./assets/wavy-border.svg");
+		-webkit-mask: url("./assets/wavy-border.svg") repeat-x;
+		mask: url("./assets/wavy-border.svg") repeat-x;
 
-		-webkit-mask-repeat: repeat-x;
-		mask-repeat: repeat-x;
+		-webkit-mask-size: 10%;
+		mask-size: 10%; // 21.25% on small
 
 		background-color: inherit;
 
@@ -292,16 +298,27 @@ h1 {
 			}
 		}
 	}
+
+	@keyframes slideUp {
+		from {
+			transform: translateY(100%);
+		}
+		to {
+			transform: translateY(0%);
+		}
+	}
 }
 
-/*
-  Keyframe animations
-*/
-@keyframes slideUp {
-	from {
-		transform: translateY(100%);
+@keyframes bounce {
+	0% {
+		transform: translateY(0);
 	}
-	to {
-		transform: translateY(0%);
+
+    50% {
+		transform: translateY(5px);
+	}
+
+    100% {
+		transform: translateY(0);
 	}
 }

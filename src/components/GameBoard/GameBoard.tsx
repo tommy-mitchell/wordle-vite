@@ -1,5 +1,5 @@
 import React from "react";
-import type { GameState } from "@components/GameWrapper";
+import type { GameState } from "@components/Game";
 import Banner from "@components/Banner";
 import GuessResults, { type Guess } from "@components/GuessResults";
 import GuessInput from "@components/GuessInput";

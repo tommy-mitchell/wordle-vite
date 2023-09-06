@@ -1,10 +1,10 @@
 import React from "react";
-import GameWrapper from "@components/GameWrapper";
+import Game from "@components/Game";
 
 export default function App() {
 	return (
 		<div className="wrapper">
-			<GameWrapper />
+			<Game />
 		</div>
 	);
 }
